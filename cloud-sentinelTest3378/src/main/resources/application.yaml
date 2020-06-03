@@ -1,0 +1,21 @@
+server:
+  port: 3378
+
+spring:
+  application:
+    name: cloud-alibaba-sentinel
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.201.66.127:8082
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+#这里没有Redis配置 所以下面会报错 不影响配置参考

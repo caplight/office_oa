@@ -5,6 +5,7 @@
     <modules>
         <module>cloud-configcentre3377</module>
         <module>cloud-commonapi</module>
+        <module>cloud-sentinelTest3378</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
