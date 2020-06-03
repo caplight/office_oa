@@ -98,11 +98,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--redis集成-->
-        <dependency>
+        <!--redis集成 如果需要则copy到自己模块的pom下-->
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <dependencyManagement>
