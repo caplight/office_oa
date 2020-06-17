@@ -6,6 +6,8 @@
         <module>cloud-configcentre3377</module>
         <module>cloud-commonapi</module>
         <module>cloud-sentinelTest3378</module>
+        <module>CAPLIGHT-cloud-systemmanage8300</module>
+        <module>CAPLIGHT-cloud-system-user8301</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -32,11 +34,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!-- nacos-config中心 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
+
         <!-- nacos服务注册与发现 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -47,17 +45,8 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-        <!-- 连接池 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.18</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.16</version>
-        </dependency>
+
+
         <!-- loadbalancer -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -103,6 +92,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
