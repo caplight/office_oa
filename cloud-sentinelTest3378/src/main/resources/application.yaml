@@ -10,8 +10,17 @@ spring:
         server-addr: 101.201.66.127:8082
     sentinel:
       transport:
-        dashboard: localhost:8080
-        port: 8719
+        dashboard: 101.201.66.127:8080
+        port: 80
+        clientIp: http://caplight.qicp.vip
+  datasource:
+    # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # mysql驱动类
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.201.66.127:3306/springcloud?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: springcloud
+    password: Springcloud1!
 management:
   endpoints:
     web:
