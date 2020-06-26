@@ -73,8 +73,8 @@ public class AdminController {
         }
         int flag=sysUserService.deleteUserByUsername(username);
         if (flag==1){
-        result.put("mes","删除成功");
-        return ResultUtil.resultSuccess(result);
+            result.put("mes","删除成功");
+            return ResultUtil.resultSuccess(result);
         }else{
             result.put("mes","请联系管理员");
             return ResultUtil.resultError(result);

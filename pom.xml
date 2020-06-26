@@ -8,6 +8,8 @@
         <module>cloud-sentinelTest3378</module>
         <module>CAPLIGHT-cloud-systemmanage8300</module>
         <module>CAPLIGHT-cloud-system-user8301</module>
+        <module>cloud-gateway8302</module>
+        <module>CAPLIGHT-cloud-systemmanage8303</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
