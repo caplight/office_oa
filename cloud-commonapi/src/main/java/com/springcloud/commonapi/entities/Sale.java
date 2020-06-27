@@ -1,5 +1,7 @@
 package com.springcloud.commonapi.entities;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +27,7 @@ public class Sale implements Serializable {
     /**
     * id
     */
+    @TableId(type= IdType.AUTO)
     private Integer id;
     /**
     * 销售主题

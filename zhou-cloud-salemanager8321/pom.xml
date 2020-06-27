@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zhou-cloud-customermanager8320</artifactId>
+    <artifactId>zhou-cloud-salemanager8321</artifactId>
 
     <dependencies>
         <!--swagger2接口文档-->
@@ -121,4 +121,5 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
 </project>

@@ -1,4 +1,4 @@
-package com.customermanage;
+package com.salemanage;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -9,21 +9,20 @@ import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author zhou
- * @date 2020/6/27 1:59
+ * @date 2020/6/27 16:20
  */
-@SpringBootApplication
-@EnableDiscoveryClient
 @EnableCaching
-@MapperScan("com.customermanager.mapper")
+@EnableDiscoveryClient
+@SpringBootApplication
+@MapperScan("com.salemanage.mapper")
 @ComponentScan(basePackages = {
  "com.springcloud.commonapi.utils",
- "com.springcloud.commonapi.config",
- "com.customermanage.service",
- "com.customermanage.restapi",
- "com.customermanage.mapper",
- "com.customermanage.config"})
-public class CustomerManage {
+ "com.salemanage.service",
+ "com.salemanage.restapi",
+ "com.salemanage.mapper",
+ "com.salemanage.config"})
+public class SaleMain8321 {
   public static void main(String[] args) {
-    SpringApplication.run(CustomerManage.class,args);
+    SpringApplication.run(SaleMain8321.class,args);
   }
 }

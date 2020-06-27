@@ -1,5 +1,6 @@
 package com.customermanage.service.impl;
 
+
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.customermanage.mapper.CustInfoMapper;
 import com.customermanage.service.CustInfoService;
@@ -26,10 +27,11 @@ public class CustInfoServiceImpl extends ServiceImpl<CustInfoMapper, Custinfo> i
   @Resource
   private CustInfoMapper custInfoMapper;
 
+
   @Override
-  @Cacheable(key = "all")
-  public List<Custinfo> queryAll() {
-    return custInfoMapper.selectList(null);
+  @Cacheable(key = "'all'")
+  public List<Custinfo> queryAll(Custinfo custinfo) {
+    return custInfoMapper.queryAll(custinfo);
   }
 
   @Override
@@ -41,7 +43,7 @@ public class CustInfoServiceImpl extends ServiceImpl<CustInfoMapper, Custinfo> i
   }
 
   @Override
-  @CacheEvict("#p0")
+  @CacheEvict(key = "#p0")
   public void deleteById(Integer id) {
     custInfoMapper.deleteById(id);
   }
@@ -54,9 +56,15 @@ public class CustInfoServiceImpl extends ServiceImpl<CustInfoMapper, Custinfo> i
   }
 
   @Override
-  @Cacheable("#p0.id")
+  @Cacheable(key = "#p0.id")
   public Custinfo insert(Custinfo custinfo) {
     custInfoMapper.insert(custinfo);
     return custinfo;
+  }
+
+  @Override
+  @Cacheable(key = "'offset:'+#p0+':limit:'+#p1")
+  public List<Custinfo> queryAllByLimit(Integer offset, Integer limit) {
+    return custInfoMapper.queryAllByLimit(offset,limit);
   }
 }

@@ -18,6 +18,7 @@ import java.util.List;
 @RequestMapping("/customer")
 @Api(value = "CustomerRestApi客户信息相关接口", tags = {"CustomerRestApi客户信息相关接口"})
 public class CustomerRestApi {
+  //获取配置文件信息
   @Value("${config.info}")
   private String configInfo;
   //版本查询，@RefreshScope自动更新测试
@@ -25,14 +26,14 @@ public class CustomerRestApi {
   public String getConfigInfo() {
     return configInfo;
   }
-
+  //服务提供
   @Resource
   private CustInfoService custInfoService;
 
   //查询所有客户信息
   @GetMapping("/queryAll")
   public String queryAll(){
-    List<Custinfo> custinfos = custInfoService.queryAll();
+    List<Custinfo> custinfos = custInfoService.queryAll(null);
     return ResultUtil.result("success",custinfos);
   }
 
@@ -64,4 +65,16 @@ public class CustomerRestApi {
     return ResultUtil.result("success",id);
   }
 
+  //根据entity查询
+  @GetMapping("/queryCust")
+  public String queryCust(Custinfo custinfo){
+    List<Custinfo> custinfos = custInfoService.queryAll(custinfo);
+    return ResultUtil.result("success",custinfo);
+  }
+
+  @GetMapping("/queryAllByLimit")
+  public String queryAllByLimit(Integer offset,Integer limit){
+    List<Custinfo> custinfos = custInfoService.queryAllByLimit(offset, limit);
+    return ResultUtil.result("success",custinfos);
+  }
 }

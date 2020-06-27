@@ -1,22 +1,22 @@
 debug: true
 server:
-  port: 8320
+  port: 8321
 spring:
   main:
     #当遇到同样名字的时候，是否允许覆盖注册
     allow-bean-definition-overriding: true
   application:
-    name: zhou-cloud-customermanage
+    name: zhou-cloud-salemanager
   cloud:
     nacos:
       discovery:
         server-addr: 101.201.66.127:8082 #Nacos服务注册中心地址
         ip: 101.201.66.127
-        port: 8320
+        port: 8321
       config:
-        prefix: zhou-configuration
         server-addr: 101.201.66.127:8082 #Nacos作为配置中心地址
         file-extension: yaml #指定yaml格式配置
+        prefix: zhou-configuration
     sentinel:
       transport:
         dashboard: 101.201.66.127:8080
@@ -25,4 +25,3 @@ spring:
       eager: true
   session:
     store-type: none
-
