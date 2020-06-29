@@ -10,8 +10,11 @@ import java.util.List;
  * @date 2020/6/27 2:07
  */
 public interface CustInfoService extends IService<Custinfo> {
+  //根据entity查询
+  List<Custinfo> queryCust(Custinfo custinfo);
+
   //根据entity查询，允许为null，null查询所有
-  List<Custinfo> queryAll(Custinfo custinfo);
+  List<Custinfo> queryAllCustInfo();
 
   //根据负责人查询客户
   List<Custinfo> queryCustByAsc(String ascription);

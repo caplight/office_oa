@@ -29,9 +29,14 @@ public class CustInfoServiceImpl extends ServiceImpl<CustInfoMapper, Custinfo> i
 
 
   @Override
-  @Cacheable(key = "'all'")
-  public List<Custinfo> queryAll(Custinfo custinfo) {
+  public List<Custinfo> queryCust(Custinfo custinfo) {
     return custInfoMapper.queryAll(custinfo);
+  }
+
+  @Override
+  @Cacheable(key = "'all'")
+  public List<Custinfo> queryAllCustInfo() {
+    return custInfoMapper.queryAll(null);
   }
 
   @Override

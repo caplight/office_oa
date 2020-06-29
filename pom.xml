@@ -11,6 +11,9 @@
         <module>cloud-gateway8302</module>
         <module>zhou-cloud-customermanager8320</module>
         <module>zhou-cloud-salemanager8321</module>
+        <module>zhou-cloud-web8322</module>
+        <module>zhou-openfeign8323</module>
+        <module>zhou-test8823</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

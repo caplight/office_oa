@@ -7,6 +7,7 @@ import com.springcloud.commonapi.utils.ResultUtil;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -20,22 +21,32 @@ import java.util.Map;
  */
 @RestController
 @Slf4j
-@RequestMapping("/sale")
+//@RequestMapping("/sale")
 @Api(value = "SaleRestApi销售信息相关接口", tags = {"SaleRestApi销售信息相关接口"})
 public class SaleRestApi {
   //服务装配
   @Autowired
   private SaleService saleService;
 
+  //获取配置文件信息
+  @Value("${config.info}")
+  private String configInfo;
+  //版本查询，@RefreshScope自动更新测试
+  @GetMapping("/config/info")
+  public String getConfigInfo() {
+    return configInfo;
+  }
+
   //查询所有顾客销售情况
   @GetMapping("/queryAllSale")
   public String queryAllSale(){
+    log.info("queryAllSale被调用");
     List<Sale> list = saleService.list();
     return ResultUtil.result("success",list);
   }
 
   //根据顾客姓名查询销售记录
-  @GetMapping("querySaleByCname")
+  @GetMapping("/querySaleByCname")
   public String querySaleByCname(String cname){
     Map<String,Object> map = new HashMap<>();
     map.put("cname",cname);
@@ -73,5 +84,15 @@ public class SaleRestApi {
       return ResultUtil.result("success",sale);
     }
     return ResultUtil.result("error",null);
+  }
+
+  //分页查询
+  @GetMapping("/querySaleByLimit")
+  public String querySaleByLimit(
+   @RequestParam(required = false,defaultValue = "1",value = "page") Integer page,
+   @RequestParam(required = false,defaultValue = "12",value = "limit") Integer limit){
+    int offset = (page-1)*limit;
+    List<Sale> sales = saleService.queryAllByLimit(offset, limit);
+    return ResultUtil.result("success",sales);
   }
 }

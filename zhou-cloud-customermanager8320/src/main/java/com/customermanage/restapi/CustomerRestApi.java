@@ -4,7 +4,7 @@ import com.customermanage.service.CustInfoService;
 import com.springcloud.commonapi.entities.Custinfo;
 import com.springcloud.commonapi.utils.ResultUtil;
 import io.swagger.annotations.Api;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,17 +15,11 @@ import java.util.List;
  * @date 2020/6/27 2:01
  */
 @RestController
-@RequestMapping("/customer")
+//@RequestMapping("/customer")
 @Api(value = "CustomerRestApi客户信息相关接口", tags = {"CustomerRestApi客户信息相关接口"})
+@Slf4j
 public class CustomerRestApi {
-  //获取配置文件信息
-  @Value("${config.info}")
-  private String configInfo;
-  //版本查询，@RefreshScope自动更新测试
-  @GetMapping("/config/info")
-  public String getConfigInfo() {
-    return configInfo;
-  }
+
   //服务提供
   @Resource
   private CustInfoService custInfoService;
@@ -33,7 +27,7 @@ public class CustomerRestApi {
   //查询所有客户信息
   @GetMapping("/queryAll")
   public String queryAll(){
-    List<Custinfo> custinfos = custInfoService.queryAll(null);
+    List<Custinfo> custinfos = custInfoService.queryAllCustInfo();
     return ResultUtil.result("success",custinfos);
   }
 
@@ -47,8 +41,11 @@ public class CustomerRestApi {
   //添加客户信息
   @PostMapping("/insert")
   public String insert(Custinfo custinfo){
-    Custinfo insert = custInfoService.insert(custinfo);
-    return ResultUtil.result("success",insert);
+    boolean save = custInfoService.save(custinfo);
+    if (save){
+      return ResultUtil.result("success",custinfo);
+    }
+    return ResultUtil.result("error",null);
   }
 
   //更新客户信息
@@ -68,12 +65,16 @@ public class CustomerRestApi {
   //根据entity查询
   @GetMapping("/queryCust")
   public String queryCust(Custinfo custinfo){
-    List<Custinfo> custinfos = custInfoService.queryAll(custinfo);
-    return ResultUtil.result("success",custinfo);
+    List<Custinfo> custinfos = custInfoService.queryCust(custinfo);
+    return ResultUtil.result("success",custinfos);
   }
 
   @GetMapping("/queryAllByLimit")
-  public String queryAllByLimit(Integer offset,Integer limit){
+  public String queryAllByLimit(
+   @RequestParam(required = false,defaultValue = "1",value = "page") Integer page,
+   @RequestParam(required = false,defaultValue = "12",value = "limit") Integer limit
+  ){
+    int offset = (page-1)*limit;
     List<Custinfo> custinfos = custInfoService.queryAllByLimit(offset, limit);
     return ResultUtil.result("success",custinfos);
   }

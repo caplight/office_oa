@@ -11,8 +11,9 @@ spring:
     nacos:
       discovery:
         server-addr: 101.201.66.127:8082 #Nacos服务注册中心地址
-        ip: 101.201.66.127
-        port: 8321
+#        ip: 101.201.66.127
+#        port: 8321
+#        server-addr: 39.108.108.125:80
       config:
         server-addr: 101.201.66.127:8082 #Nacos作为配置中心地址
         file-extension: yaml #指定yaml格式配置
@@ -23,5 +24,5 @@ spring:
         port: 10000
         clientIp: 101.201.66.127
       eager: true
-  session:
-    store-type: none
+#  session:
+#    store-type: none
