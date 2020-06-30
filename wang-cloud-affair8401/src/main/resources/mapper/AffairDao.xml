@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.affair.dao.AffairDao">
+
+    <resultMap type="com.springcloud.commonapi.entities.Affair" id="AffairMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="createdate" column="createdate" jdbcType="TIMESTAMP"/>
+        <result property="enddate" column="enddate" jdbcType="TIMESTAMP"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="detail" column="detail" jdbcType="VARCHAR"/>
+        <result property="cid" column="cid" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="AffairMap">
+        select
+          id, name, createdate, enddate, url, detail, cid
+        from springcloud.affair
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="AffairMap">
+        select
+          id, name, createdate, enddate, url, detail, cid
+        from springcloud.affair
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="AffairMap">
+        select
+          id, name, createdate, enddate, url, detail, cid
+        from springcloud.affair
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="createdate != null">
+                and createdate = #{createdate}
+            </if>
+            <if test="enddate != null">
+                and enddate = #{enddate}
+            </if>
+            <if test="url != null and url != ''">
+                and url = #{url}
+            </if>
+            <if test="detail != null and detail != ''">
+                and detail = #{detail}
+            </if>
+            <if test="cid != null">
+                and cid = #{cid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into springcloud.affair(id,name, createdate, enddate, url, detail, cid)
+        values (#{id},#{name}, #{createdate}, #{enddate}, #{url}, #{detail}, #{cid})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update springcloud.affair
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="createdate != null">
+                createdate = #{createdate},
+            </if>
+            <if test="enddate != null">
+                enddate = #{enddate},
+            </if>
+            <if test="url != null and url != ''">
+                url = #{url},
+            </if>
+            <if test="detail != null and detail != ''">
+                detail = #{detail},
+            </if>
+            <if test="cid != null">
+                cid = #{cid},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from springcloud.affair where id = #{id}
+    </delete>
+
+</mapper>

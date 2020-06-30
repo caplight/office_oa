@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.note.dao.MynoteDao">
+
+    <resultMap type="com.springcloud.commonapi.entities.Mynote" id="MynoteMap">
+        <result property="mynoteid" column="mynoteid" jdbcType="INTEGER"/>
+        <result property="mynotetitle" column="mynotetitle" jdbcType="VARCHAR"/>
+        <result property="mynotecontent" column="mynotecontent" jdbcType="VARCHAR"/>
+        <result property="mynotecreatetime" column="mynotecreatetime" jdbcType="TIMESTAMP"/>
+        <result property="mynotecreateuser" column="mynotecreateuser" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MynoteMap">
+        select
+          mynoteid, mynotetitle, mynotecontent, mynotecreatetime, mynotecreateuser
+        from springcloud.mynote
+        where mynoteid = #{mynoteid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="MynoteMap">
+        select
+          mynoteid, mynotetitle, mynotecontent, mynotecreatetime, mynotecreateuser
+        from springcloud.mynote
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="MynoteMap">
+        select
+          mynoteid, mynotetitle, mynotecontent, mynotecreatetime, mynotecreateuser
+        from springcloud.mynote
+        <where>
+            <if test="mynoteid != null">
+                and mynoteid = #{mynoteid}
+            </if>
+            <if test="mynotetitle != null and mynotetitle != ''">
+                and mynotetitle = #{mynotetitle}
+            </if>
+            <if test="mynotecontent != null and mynotecontent != ''">
+                and mynotecontent = #{mynotecontent}
+            </if>
+            <if test="mynotecreatetime != null">
+                and mynotecreatetime = #{mynotecreatetime}
+            </if>
+            <if test="mynotecreateuser != null and mynotecreateuser != ''">
+                and mynotecreateuser = #{mynotecreateuser}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="mynoteid" useGeneratedKeys="true">
+        insert into springcloud.mynote(mynotetitle, mynotecontent, mynotecreatetime, mynotecreateuser)
+        values (#{mynotetitle}, #{mynotecontent}, #{mynotecreatetime}, #{mynotecreateuser})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update springcloud.mynote
+        <set>
+            <if test="mynotetitle != null and mynotetitle != ''">
+                mynotetitle = #{mynotetitle},
+            </if>
+            <if test="mynotecontent != null and mynotecontent != ''">
+                mynotecontent = #{mynotecontent},
+            </if>
+            <if test="mynotecreatetime != null">
+                mynotecreatetime = #{mynotecreatetime},
+            </if>
+            <if test="mynotecreateuser != null and mynotecreateuser != ''">
+                mynotecreateuser = #{mynotecreateuser},
+            </if>
+        </set>
+        where mynoteid = #{mynoteid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from springcloud.mynote where mynoteid = #{mynoteid}
+    </delete>
+
+</mapper>
