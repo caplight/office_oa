@@ -91,6 +91,12 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
+        <!-- SpringCloud ailibaba sentinel-datasource-nacos 持久化需要用到-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
+
         <!-- springsecurity-->
 
         <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->

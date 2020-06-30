@@ -6,46 +6,20 @@ import java.io.Serializable;
 /**
  * (Returnnote)实体类
  *
- * @author makejava
+ * @author Sayen
  * @since 2020-06-26 11:49:33
  */
 public class Returnnote implements Serializable {
     private static final long serialVersionUID = 450721316970736602L;
-    /**
-    * 退货单编号
-    */
+
     private String returnId;
-    /**
-    * 订单号
-    */
     private Integer ordernumber;
-    /**
-    * 销售日期
-    */
     private Date saledate;
-    /**
-    * 货品
-    */
     private String goods;
-    /**
-    * 退货数量
-    */
     private String rAmount;
-    /**
-    * 售价
-    */
     private Double price;
-    /**
-    * 折扣
-    */
     private Double discount;
-    /**
-    * 退货金额
-    */
     private Double rSum;
-    /**
-    * 退货日期
-    */
     private Date returndate;
 
 

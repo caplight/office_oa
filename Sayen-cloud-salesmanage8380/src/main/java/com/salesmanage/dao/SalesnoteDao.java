@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * (Salesnote)表数据库访问层
  *
- * @author makejava
+ * @author Sayen
  * @since 2020-06-26 11:49:13
  */
 @Mapper

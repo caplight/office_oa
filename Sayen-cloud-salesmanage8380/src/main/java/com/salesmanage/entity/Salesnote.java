@@ -6,54 +6,22 @@ import java.io.Serializable;
 /**
  * (Salesnote)实体类
  *
- * @author makejava
+ * @author Sayen
  * @since 2020-06-26 11:49:12
  */
 public class Salesnote implements Serializable {
     private static final long serialVersionUID = -31184933186330683L;
-    /**
-    * 销售单编号
-    */
+
     private String salesid;
-    /**
-    * 客户编号
-    */
     private Integer clientid;
-    /**
-    * 订单号
-    */
     private Integer ordernumber;
-    /**
-    * 销售日期
-    */
     private Date saledate;
-    /**
-    * 业务员
-    */
     private String salesman;
-    /**
-    * 货品
-    */
     private String goods;
-    /**
-    * 数量
-    */
     private Integer amount;
-    /**
-    * 价格
-    */
     private Double price;
-    /**
-    * 折扣
-    */
     private String discount;
-    /**
-    * 总额
-    */
     private String total;
-    /**
-    * 实收金额
-    */
     private String sum;
 
 

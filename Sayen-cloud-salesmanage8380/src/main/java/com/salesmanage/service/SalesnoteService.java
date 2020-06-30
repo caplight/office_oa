@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * (Salesnote)表服务接口
  *
- * @author makejava
+ * @author Sayen
  * @since 2020-06-26 11:49:14
  */
 public interface SalesnoteService {
