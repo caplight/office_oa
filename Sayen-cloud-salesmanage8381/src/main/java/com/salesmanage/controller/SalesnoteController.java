@@ -42,7 +42,7 @@ public class SalesnoteController {
         return this.salesnoteService.queryById(id);
     }
     /**
-     *查询表内所有数据
+    *查询表内所有数据
      */
 
 
