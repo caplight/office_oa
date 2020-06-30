@@ -1,0 +1,26 @@
+debug: true
+server:
+  port: 8303
+spring:
+  main:
+    #当遇到同样名字的时候，是否允许覆盖注册
+    allow-bean-definition-overriding: true
+  application:
+    name: caplight-cloud-systemmanage
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.201.66.127:8082 #Nacos服务注册中心地址
+        ip: 101.201.66.127
+        port: 8303
+      config:
+        server-addr: 101.201.66.127:8082 #Nacos作为配置中心地址
+        file-extension: yaml #指定yaml格式配置
+    sentinel:
+      transport:
+        dashboard: 101.201.66.127:8080
+        port: 10004
+        clientIp: 101.201.66.127
+      eager: true
+  session:
+    store-type: none

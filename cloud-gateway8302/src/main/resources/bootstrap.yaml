@@ -30,6 +30,6 @@ spring:
         - id: caplight-cloud-systemmanage
           uri: lb://caplight-cloud-systemmanage
           predicates:
-            - Path= /system/**
+            - Path= /system/**,/admin/**,/index/**
   session:
     store-type: none

@@ -12,9 +12,23 @@
     <artifactId>cloud-commonapi</artifactId>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.dyuproject.protostuff/protostuff-core -->
+        <!-- 序列化相关-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-core</artifactId>
+            <version>${dyuproject.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-runtime</artifactId>
+            <version>${dyuproject.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${google.code.gson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -5,9 +5,16 @@
     <modules>
         <module>cloud-configcentre3377</module>
         <module>cloud-commonapi</module>
+        <module>Sayen-cloud-salesmanage8380</module>
         <module>cloud-sentinelTest3378</module>
         <module>CAPLIGHT-cloud-systemmanage8300</module>
-        <module>CAPLIGHT-cloud-system-user8301</module>
+        <module>CAPLIGHT-cloud-systemmanage8303</module>
+        <module>cloud-gateway8302</module>
+        <module>zhou-cloud-customermanager8320</module>
+        <module>zhou-cloud-salemanager8321</module>
+        <module>zhou-cloud-web8322</module>
+        <module>zhou-openfeign8323</module>
+        <module>zhou-test8823</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -23,6 +30,8 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
+        <dyuproject.version>1.1.5</dyuproject.version>
+        <google.code.gson.version>2.7</google.code.gson.version>
         <java.version>1.8</java.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
@@ -45,8 +54,6 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-
-
         <!-- loadbalancer -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -61,7 +68,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.60</version>
+            <version>1.2.62</version>
         </dependency>
         <!-- 使用jrebel必须配备dev包 -->
         <dependency>
