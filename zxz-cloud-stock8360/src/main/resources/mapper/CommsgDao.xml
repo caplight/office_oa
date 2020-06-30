@@ -56,8 +56,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="cno" useGeneratedKeys="true">
-        insert into springcloud.comMsg(cName, cCompany, cTime, cClass, sNumber)
-        values (#{cname}, #{ccompany}, #{ctime}, #{cclass}, #{snumber})
+        insert into springcloud.comMsg(cNO,cName, cCompany, cTime, cClass, sNumber)
+        values (#{cNO},#{cname}, #{ccompany}, #{ctime}, #{cclass}, #{snumber})
     </insert>
 
     <!--通过主键修改数据-->
