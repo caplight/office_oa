@@ -15,6 +15,7 @@
         <module>zhou-cloud-web8322</module>
         <module>zhou-openfeign8323</module>
         <module>zhou-test8823</module>
+        <module>Sayen-cloud-salesmanage8381</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

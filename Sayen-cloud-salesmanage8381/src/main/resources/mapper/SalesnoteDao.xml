@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.salesmanage.dao.SalesnoteDao">
+
+    <resultMap type="com.salesmanage.entity.Salesnote" id="SalesnoteMap">
+        <result property="salesid" column="salesid" jdbcType="VARCHAR"/>
+        <result property="clientid" column="clientid" jdbcType="INTEGER"/>
+        <result property="ordernumber" column="ordernumber" jdbcType="INTEGER"/>
+        <result property="saledate" column="saledate" jdbcType="TIMESTAMP"/>
+        <result property="salesman" column="salesman" jdbcType="VARCHAR"/>
+        <result property="goods" column="goods" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="INTEGER"/>
+        <result property="price" column="price" jdbcType="NUMERIC"/>
+        <result property="discount" column="discount" jdbcType="VARCHAR"/>
+        <result property="total" column="total" jdbcType="VARCHAR"/>
+        <result property="sum" column="sum" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById"  parameterType="java.lang.String" resultMap="SalesnoteMap">
+        select
+          salesid, clientid, ordernumber, saledate, salesman, goods, amount, price, discount, total, sum
+        from springcloud.salesnote
+        where salesid = #{salesid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SalesnoteMap">
+        select
+          salesid, clientid, ordernumber, saledate, salesman, goods, amount, price, discount, total, sum
+        from springcloud.salesnote
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SalesnoteMap">
+        select
+          salesid, clientid, ordernumber, saledate, salesman, goods, amount, price, discount, total, sum
+        from springcloud.salesnote
+        <where>
+            <if test="salesid != null and salesid != ''">
+                and salesid = #{salesid}
+            </if>
+            <if test="clientid != null">
+                and clientid = #{clientid}
+            </if>
+            <if test="ordernumber != null">
+                and ordernumber = #{ordernumber}
+            </if>
+            <if test="saledate != null">
+                and saledate = #{saledate}
+            </if>
+            <if test="salesman != null and salesman != ''">
+                and salesman = #{salesman}
+            </if>
+            <if test="goods != null and goods != ''">
+                and goods = #{goods}
+            </if>
+            <if test="amount != null">
+                and amount = #{amount}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="discount != null and discount != ''">
+                and discount = #{discount}
+            </if>
+            <if test="total != null and total != ''">
+                and total = #{total}
+            </if>
+            <if test="sum != null and sum != ''">
+                and sum = #{sum}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="salesid" useGeneratedKeys="true">
+        insert into springcloud.salesnote(clientid, ordernumber, saledate, salesman, goods, amount, price, discount, total, sum)
+        values (#{clientid}, #{ordernumber}, #{saledate}, #{salesman}, #{goods}, #{amount}, #{price}, #{discount}, #{total}, #{sum})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update springcloud.salesnote
+        <set>
+            <if test="clientid != null">
+                clientid = #{clientid},
+            </if>
+            <if test="ordernumber != null">
+                ordernumber = #{ordernumber},
+            </if>
+            <if test="saledate != null">
+                saledate = #{saledate},
+            </if>
+            <if test="salesman != null and salesman != ''">
+                salesman = #{salesman},
+            </if>
+            <if test="goods != null and goods != ''">
+                goods = #{goods},
+            </if>
+            <if test="amount != null">
+                amount = #{amount},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="discount != null and discount != ''">
+                discount = #{discount},
+            </if>
+            <if test="total != null and total != ''">
+                total = #{total},
+            </if>
+            <if test="sum != null and sum != ''">
+                sum = #{sum},
+            </if>
+        </set>
+        where salesid = #{salesid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from springcloud.salesnote where salesid = #{salesid}
+    </delete>
+
+</mapper>
