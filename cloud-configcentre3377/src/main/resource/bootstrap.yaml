@@ -1,0 +1,14 @@
+debug: true
+server:
+  port: 3377
+spring:
+  application:
+    name: springcloud-officeoa-conf
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.201.66.127:8082 #Nacos服务注册中心地址
+      config:
+        server-addr: 101.201.66.127:8082 #Nacos作为配置中心地址
+        file-extension: yaml #指定yaml格式配置
+

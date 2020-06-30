@@ -3,9 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <module>cloud-configcentre</module>
+        <module>cloud-configcentre3377</module>
         <module>cloud-commonapi</module>
         <module>Sayen-cloud-salesmanage8380</module>
+        <module>cloud-sentinelTest3378</module>
+        <module>CAPLIGHT-cloud-systemmanage8300</module>
+        <module>CAPLIGHT-cloud-systemmanage8303</module>
+        <module>cloud-gateway8302</module>
+        <module>zhou-cloud-customermanager8320</module>
+        <module>zhou-cloud-salemanager8321</module>
+        <module>zhou-cloud-web8322</module>
+        <module>zhou-openfeign8323</module>
+        <module>zhou-test8823</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -21,26 +30,20 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
+        <dyuproject.version>1.1.5</dyuproject.version>
+        <google.code.gson.version>2.7</google.code.gson.version>
         <java.version>1.8</java.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
     </properties>
 
     <dependencies>
-        <!-- 以下两个为必用 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+        <!-- 以下为必用 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!-- nacos-config中心 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
+
         <!-- nacos服务注册与发现 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -50,22 +53,6 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
-        <!-- gateway -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-webflux</artifactId>
-                </exclusion>
-            </exclusions>
-     
         </dependency>
         <!-- loadbalancer -->
         <dependency>
@@ -106,6 +93,16 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <!--redis集成 如果需要则copy到自己模块的pom下-->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

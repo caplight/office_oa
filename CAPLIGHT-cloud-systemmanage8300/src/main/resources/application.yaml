@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: dev
+    #开发环境下的config 必须按匹配规则设定！！！
+
+# JWT配置
+jwt:
+  # 密匙KEY
+  secret: JWTSecret
+  # HeaderKEY
+  tokenHeader: Authorization
+  # Token前缀字符
+  tokenPrefix: CAPLIGHT-
+  # 过期时间 单位秒 1天后过期=86400 7天后过期=604800
+  expiration: 86400
+  # 配置不需要认证的接口
+  antMatchers: /system/user/register,/index/**
+
+logging:
+  config: classpath:logback-boot.xml
