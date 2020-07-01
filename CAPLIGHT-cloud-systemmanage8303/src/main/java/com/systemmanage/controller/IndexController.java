@@ -38,9 +38,12 @@ public class IndexController {
     }
 
     @GetMapping("/test")
-    @SentinelResource(value = "test")
+    @SentinelResource(value = "test",fallback = "testFallback",defaultFallback = "testFallback")
     public String test() {
         int age = 10 / 0;
         return "----testE 测试异常数";
+    }
+     public String testFallback(){
+        return "服务熔断，port:"+port;
     }
 }
