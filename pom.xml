@@ -5,12 +5,22 @@
     <modules>
         <module>cloud-configcentre3377</module>
         <module>cloud-commonapi</module>
+        <module>Sayen-cloud-salesmanage8380</module>
         <module>cloud-sentinelTest3378</module>
         <module>cloud-gateway8302</module>
         <module>wang-cloud-affair8401</module>
         <module>wang-cloud-note8402</module>
         <module>wang-cloud-test8403</module>
         <module>wang-cloud-file8404</module>
+        <module>CAPLIGHT-cloud-systemmanage8300</module>
+        <module>CAPLIGHT-cloud-systemmanage8303</module>
+        <module>cloud-gateway8302</module>
+        <module>zhou-cloud-customermanager8320</module>
+        <module>zhou-cloud-salemanager8321</module>
+        <module>zhou-cloud-web8322</module>
+        <module>zhou-test8823</module>
+        <module>Sayen-cloud-salesmanage8381</module>
+        <module>zxz-cloud-stock8360</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -50,7 +60,6 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-
         <!-- loadbalancer -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -66,7 +75,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.60</version>
+            <version>1.2.62</version>
         </dependency>
         <!-- 使用jrebel必须配备dev包 -->
         <dependency>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.salesmanage.dao.ReturnnoteDao">
+
+    <resultMap type="com.salesmanage.entity.Returnnote" id="ReturnnoteMap">
+        <result property="returnId" column="return_id" jdbcType="VARCHAR"/>
+        <result property="ordernumber" column="ordernumber" jdbcType="INTEGER"/>
+        <result property="saledate" column="saledate" jdbcType="TIMESTAMP"/>
+        <result property="goods" column="goods" jdbcType="VARCHAR"/>
+        <result property="rAmount" column="r_amount" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="NUMERIC"/>
+        <result property="discount" column="discount" jdbcType="NUMERIC"/>
+        <result property="rSum" column="r_sum" jdbcType="NUMERIC"/>
+        <result property="returndate" column="returndate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ReturnnoteMap">
+        select
+          return_id, ordernumber, saledate, goods, r_amount, price, discount, r_sum, returndate
+        from springcloud.returnnote
+        where return_id = #{returnId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ReturnnoteMap">
+        select
+          return_id, ordernumber, saledate, goods, r_amount, price, discount, r_sum, returndate
+        from springcloud.returnnote
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ReturnnoteMap">
+        select
+          return_id, ordernumber, saledate, goods, r_amount, price, discount, r_sum, returndate
+        from springcloud.returnnote
+        <where>
+            <if test="returnId != null and returnId != ''">
+                and return_id = #{returnId}
+            </if>
+            <if test="ordernumber != null">
+                and ordernumber = #{ordernumber}
+            </if>
+            <if test="saledate != null">
+                and saledate = #{saledate}
+            </if>
+            <if test="goods != null and goods != ''">
+                and goods = #{goods}
+            </if>
+            <if test="rAmount != null and rAmount != ''">
+                and r_amount = #{rAmount}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="discount != null">
+                and discount = #{discount}
+            </if>
+            <if test="rSum != null">
+                and r_sum = #{rSum}
+            </if>
+            <if test="returndate != null">
+                and returndate = #{returndate}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="returnId" useGeneratedKeys="true">
+        insert into springcloud.returnnote(ordernumber, saledate, goods, r_amount, price, discount, r_sum, returndate)
+        values (#{ordernumber}, #{saledate}, #{goods}, #{rAmount}, #{price}, #{discount}, #{rSum}, #{returndate})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update springcloud.returnnote
+        <set>
+            <if test="ordernumber != null">
+                ordernumber = #{ordernumber},
+            </if>
+            <if test="saledate != null">
+                saledate = #{saledate},
+            </if>
+            <if test="goods != null and goods != ''">
+                goods = #{goods},
+            </if>
+            <if test="rAmount != null and rAmount != ''">
+                r_amount = #{rAmount},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="discount != null">
+                discount = #{discount},
+            </if>
+            <if test="rSum != null">
+                r_sum = #{rSum},
+            </if>
+            <if test="returndate != null">
+                returndate = #{returndate},
+            </if>
+        </set>
+        where return_id = #{returnId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from springcloud.returnnote where return_id = #{returnId}
+    </delete>
+
+</mapper>

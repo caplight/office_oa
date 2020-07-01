@@ -1,0 +1,44 @@
+debug: true
+server:
+  port: 8381
+
+spring:
+  main:
+    #当遇到同样名字的时候，是否允许覆盖注册
+    allow-bean-definition-overriding: true
+  application:
+    name: sayen-cloud-salesmanage
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #Nacos服务注册中心地址
+      config:
+        server-addr: localhost:8848 #Nacos作为配置中心地址
+        file-extension: yaml #指定yaml格式配置
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 10010
+        clientIp: localhost
+  session:
+    store-type: none
+
+mybatis-plus:
+  # xml
+  mapper-locations: classpath:mapper/*Dao.xml
+  # 实体扫描，多个package用逗号或者分号分隔
+  type-aliases-package: com.salesmanage.entity.*
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+  feign:
+    sentinel:
+      enabled: true #激活Sentinel 对Feign的支持

@@ -10,17 +10,13 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 101.201.66.127:8082 #Nacos服务注册中心地址
-        ip: 101.201.66.127
-        port: 8302
+        server-addr: localhost:8848 #Nacos服务注册中心地址
       config:
         server-addr: 101.201.66.127:8082 #Nacos作为配置中心地址
         file-extension: yaml #指定yaml格式配置
     sentinel:
       transport:
-        dashboard: 101.201.66.127:8080
-        port: 10003
-        clientIp: 101.201.66.127
+        dashboard: localhost:8080
       eager: true
     gateway:
       discovery:
@@ -31,5 +27,9 @@ spring:
           uri: lb://caplight-cloud-systemmanage
           predicates:
             - Path= /system/**,/admin/**,/index/**
+        - id: sayen-cloud-salesmanage
+          uri: lb://sayen-cloud-salesmanage
+          predicates:
+            - Path= /returnnote/**,/salesnote/**
   session:
     store-type: none

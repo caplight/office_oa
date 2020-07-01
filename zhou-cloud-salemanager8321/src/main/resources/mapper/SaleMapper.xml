@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.salemanage.mapper.SaleMapper">
+
+    <resultMap type="com.springcloud.commonapi.entities.Sale" id="SaleMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="theme" column="theme" jdbcType="VARCHAR"/>
+        <result property="cname" column="cname" jdbcType="VARCHAR"/>
+        <result property="money" column="money" jdbcType="VARCHAR"/>
+        <result property="demand" column="demand" jdbcType="VARCHAR"/>
+        <result property="date" column="date" jdbcType="TIMESTAMP"/>
+        <result property="cid" column="cid" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SaleMap">
+        select
+          id, theme, cname, money, demand, date, cid
+        from springcloud.sale
+        limit #{offset}, #{limit}
+    </select>
+
+
+</mapper>

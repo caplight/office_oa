@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stock.dao.CommsgDao">
+
+    <resultMap type="com.springcloud.commonapi.entities.Commsg" id="CommsgMap">
+        <result property="cno" column="cNO" jdbcType="INTEGER"/>
+        <result property="cname" column="cName" jdbcType="VARCHAR"/>
+        <result property="ccompany" column="cCompany" jdbcType="VARCHAR"/>
+        <result property="ctime" column="cTime" jdbcType="TIMESTAMP"/>
+        <result property="cclass" column="cClass" jdbcType="VARCHAR"/>
+        <result property="snumber" column="sNumber" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="CommsgMap">
+        select
+          cNO, cName, cCompany, cTime, cClass, sNumber
+        from springcloud.comMsg
+        where cNO = #{cno}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CommsgMap">
+        select
+          cNO, cName, cCompany, cTime, cClass, sNumber
+        from springcloud.comMsg
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="CommsgMap">
+        select
+          cNO, cName, cCompany, cTime, cClass, sNumber
+        from springcloud.comMsg
+        <where>
+            <if test="cno != null">
+                and cNO = #{cno}
+            </if>
+            <if test="cname != null and cname != ''">
+                and cName = #{cname}
+            </if>
+            <if test="ccompany != null and ccompany != ''">
+                and cCompany = #{ccompany}
+            </if>
+            <if test="ctime != null">
+                and cTime = #{ctime}
+            </if>
+            <if test="cclass != null and cclass != ''">
+                and cClass = #{cclass}
+            </if>
+            <if test="snumber != null">
+                and sNumber = #{snumber}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="cno" useGeneratedKeys="true">
+        insert into springcloud.comMsg(cNO,cName, cCompany, cTime, cClass, sNumber)
+        values (#{cNO},#{cname}, #{ccompany}, #{ctime}, #{cclass}, #{snumber})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update springcloud.comMsg
+        <set>
+            <if test="cname != null and cname != ''">
+                cName = #{cname},
+            </if>
+            <if test="ccompany != null and ccompany != ''">
+                cCompany = #{ccompany},
+            </if>
+            <if test="ctime != null">
+                cTime = #{ctime},
+            </if>
+            <if test="cclass != null and cclass != ''">
+                cClass = #{cclass},
+            </if>
+            <if test="snumber != null">
+                sNumber = #{snumber},
+            </if>
+        </set>
+        where cNO = #{cno}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from springcloud.comMsg where cNO = #{cno}
+    </delete>
+
+</mapper>
