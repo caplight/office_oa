@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    #    开发环境，配置文件由nacos管理
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+file:
+  staticAccessPath: /static/file/**
+  uploadFolder: D://uploadFiles/
+
+
+
+
+
